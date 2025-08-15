@@ -8,7 +8,7 @@ const navLinks = [
         title: "About Us",
     },
     {
-        id: "work",
+        id: "art",
         title: "The Art",
     },
     {
@@ -22,25 +22,25 @@ const cocktailLists = [
         name: "Chapel Hill Shiraz",
         country: "AU",
         detail: "Battle",
-        price: "$10",
+        price: "₹830",
     },
     {
         name: "Caten Malbee",
         country: "AU",
         detail: "Battle",
-        price: "$49",
+        price: "₹4,070",
     },
     {
         name: "Rhino Pale Ale",
         country: "CA",
         detail: "750 ml",
-        price: "$20",
+        price: "₹1,660",
     },
     {
         name: "Irish Guinness",
         country: "IE",
         detail: "600 ml",
-        price: "$29",
+        price: "₹2,410",
     },
 ];
 
@@ -49,25 +49,25 @@ const mockTailLists = [
         name: "Tropical Bloom",
         country: "US",
         detail: "Battle",
-        price: "$10",
+        price: "₹830",
     },
     {
         name: "Passionfruit Mint",
         country: "US",
         detail: "Battle",
-        price: "$49",
+        price: "₹4,070",
     },
     {
         name: "Citrus Glow",
         country: "CA",
         detail: "750 ml",
-        price: "$20",
+        price: "₹1,660",
     },
     {
         name: "Lavender Fizz",
         country: "IE",
         detail: "600 ml",
-        price: "$29",
+        price: "₹2,410",
     },
 ];
 
@@ -110,31 +110,31 @@ const storeInfo = {
 };
 
 const openingHours = [
-    { day: "Mon–Thu", time: "11:00am – 12am" },
-    { day: "Fri", time: "11:00am – 2am" },
-    { day: "Sat", time: "9:00am – 2am" },
-    { day: "Sun", time: "9:00am – 1am" },
+    { day: "Mon-Thu", time: "11:00am - 12am" },
+    { day: "Fri", time: "11:00am - 2am" },
+    { day: "Sat", time: "9:00am - 2am" },
+    { day: "Sun", time: "9:00am - 1am" },
 ];
 
 const socials = [
     {
         name: "Instagram",
         icon: "/images/insta.png",
-        url: "#",
+        url: "https://www.instagram.com/samarth3282/",
     },
     {
         name: "X (Twitter)",
         icon: "/images/x.png",
-        url: "#",
+        url: "https://x.com/samarth3282",
     },
     {
         name: "Facebook",
         icon: "/images/fb.png",
-        url: "#",
+        url: "https://www.facebook.com/profile.php?id=61579610336782",
     },
 ];
 
-const sliderLists = [
+const allCocktails = [
     {
         id: 1,
         name: "Classic Mojito",
@@ -179,5 +179,5 @@ export {
     openingHours,
     storeInfo,
     socials,
-    sliderLists,
+    allCocktails,
 };

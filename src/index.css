@@ -1,3 +1,4 @@
+/* Universal CSS - Cross-platform compatible styles */
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
 
 @import "tailwindcss";
@@ -13,66 +14,68 @@
     --font-sans: "Mona Sans", sans-serif;
     --font-modern-negra: "Modern Negra", sans-serif;
     --font-serif: "DM Serif Text", serif;
-    --breakpoint-sm: 640px;
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 1024px;
-    --breakpoint-xl: 1280px;
-    --breakpoint-2xl: 1536px;
-    --container-sm: 640px;
-    --container-md: 768px;
-    --container-lg: 1024px;
-    --container-xl: 1280px;
-    --container-2xl: 1400px;
 }
 
 html,
 body {
+    /* margin-left: 10; */
     width: 100%;
     background-color: black;
     color: white;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* Better box model consistency */
+    box-sizing: border-box;
+    /* Hide scrollbar for webkit browsers (Chrome, Safari) */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
-/* Container utility for proper width constraints */
-.container {
+/* Hide scrollbar for webkit browsers */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Additional webkit scrollbar hiding */
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+    display: none;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+    display: none;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Universal scrollbar hiding */
+*::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Specific targeting for root elements */
+#root,
+main {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
 }
 
-@media (min-width: 640px) {
-    .container {
-        max-width: 640px;
-    }
-}
-
-@media (min-width: 768px) {
-    .container {
-        max-width: 768px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .container {
-        max-width: 1024px;
-        padding-left: 0;
-        padding-right: 0;
-    }
-}
-
-@media (min-width: 1280px) {
-    .container {
-        max-width: 1280px;
-    }
-}
-
-@media (min-width: 1536px) {
-    .container {
-        max-width: 1400px;
-    }
+#root::-webkit-scrollbar,
+main::-webkit-scrollbar {
+    display: none;
 }
 
 @utility flex-center {
@@ -90,7 +93,9 @@ body {
 @utility text-gradient {
     background: linear-gradient(to bottom, #ffffff, #898989);
     -webkit-background-clip: text;
+    -moz-background-clip: text;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
     color: transparent;
 }
 
@@ -104,9 +109,13 @@ body {
 }
 
 @utility masked-img {
+    -webkit-mask-image: url("/images/mask-img.png");
     mask-image: url("/images/mask-img.png");
+    -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
+    -webkit-mask-position: center;
     mask-position: center;
+    -webkit-mask-size: 50%;
     mask-size: 50%;
 }
 
@@ -119,12 +128,7 @@ body {
         @apply fixed z-50 w-full;
 
         div {
-            @apply flex md:flex-row flex-col md:justify-between items-center gap-5 py-5 lg:px-0 px-5 container mx-auto;
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding-left: 1.25rem;
-            padding-right: 1.25rem;
+            @apply flex md:flex-row flex-col md:justify-between items-center gap-5 py-5 px-5 container mx-auto;
         }
 
         p {
@@ -160,11 +164,7 @@ body {
         }
 
         .body {
-            @apply container mx-auto absolute left-1/2 -translate-x-1/2 lg:bottom-20 top-auto md:top-[30vh] flex justify-between items-end;
-            width: 100%;
-            max-width: 1280px;
-            padding-left: 1.25rem;
-            padding-right: 1.25rem;
+            @apply container mx-auto absolute left-1/2 -translate-x-1/2 lg:bottom-20 top-auto md:top-[30vh] flex justify-between items-end px-5;
 
             .content {
                 @apply flex lg:flex-row flex-col w-full gap-10 justify-between items-center lg:items-end mx-auto;
@@ -194,6 +194,11 @@ body {
 
     video {
         @apply w-full md:h-[80%] h-1/2 absolute bottom-0 left-0 md:object-contain object-bottom object-cover;
+        /* Ensure video compatibility across browsers */
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
     }
 
     #cocktails {
@@ -208,13 +213,7 @@ body {
         }
 
         .list {
-            @apply container mx-auto relative z-10 flex md:flex-row flex-col justify-between items-start gap-20 pt-40 2xl:px-0 px-5;
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding-left: 1.25rem;
-            padding-right: 1.25rem;
-        }
+            @apply container mx-auto relative z-10 flex md:flex-row flex-col justify-between items-start gap-20 pt-40 px-5;
 
             .popular {
                 @apply space-y-8 w-full md:w-fit;
@@ -251,12 +250,7 @@ body {
     }
 
     #about {
-        @apply min-h-screen py-28 2xl:px-0 px-5 container mx-auto;
-        width: 100%;
-        max-width: 1280px;
-        margin: 0 auto;
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
+        @apply min-h-screen py-28 px-5 container mx-auto;
 
         .content {
             @apply grid grid-cols-1 lg:grid-cols-12 gap-5;
@@ -346,7 +340,7 @@ body {
     }
 
     #menu {
-        @apply relative w-full md:mt-40 mt-0 2xl:px-0 px-5 py-20 radial-gradient;
+        @apply relative w-full md:mt-40 mt-0 px-5 py-20 radial-gradient;
 
         #m-left-leaf {
             @apply object-contain absolute -bottom-20 left-0 md:w-fit w-1/3;
@@ -358,11 +352,6 @@ body {
 
         .cocktail-tabs {
             @apply grid md:grid-cols-4 grid-cols-2 md:gap-20 gap-10 sm:mb-32 mb-20 relative z-10 md:max-w-6xl md:mx-auto;
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding-left: 1.25rem;
-            padding-right: 1.25rem;
 
             button {
                 @apply md:text-3xl text-xl pb-2 cursor-pointer hover:text-yellow hover:border-yellow border-b-1 transition-colors font-modern-negra;
@@ -371,11 +360,6 @@ body {
 
         .content {
             @apply flex flex-col justify-between items-center container mx-auto relative;
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding-left: 1.25rem;
-            padding-right: 1.25rem;
 
             .arrows {
                 @apply flex items-center justify-between w-full absolute;
@@ -436,11 +420,6 @@ body {
 
         .content {
             @apply container mx-auto lg:py-14 2xl:py-32 py-16 flex flex-col justify-between gap-10 min-h-dvh;
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding-left: 1.25rem;
-            padding-right: 1.25rem;
 
             h2 {
                 @apply lg:text-6xl 2xl:text-8xl text-5xl font-modern-negra md:translate-y-0 translate-y-5;
@@ -459,3 +438,4 @@ body {
             @apply absolute bottom-0 right-0 lg:w-96 w-1/3 pointer-events-none;
         }
     }
+}
