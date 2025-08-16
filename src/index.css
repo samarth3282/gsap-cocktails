@@ -266,8 +266,8 @@ main::-webkit-scrollbar {
                     @apply text-lg;
                 }
 
-                div {
-                    @apply flex flex-col justify-between md:gap-2 gap-5;
+                > div:last-child {
+                    @apply bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50;
 
                     span {
                         @apply text-yellow font-bold text-5xl;
@@ -438,4 +438,21 @@ main::-webkit-scrollbar {
             @apply absolute bottom-0 right-0 lg:w-96 w-1/3 pointer-events-none;
         }
     }
+
+    
+
+}
+
+.video-sequence {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-sequence canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
